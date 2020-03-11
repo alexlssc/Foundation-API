@@ -22,7 +22,8 @@ from restapi import views, viewsets
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
-router.register('books', viewsets.BooksViewSet, basename='Books')
+router.register(r'^books', viewsets.BooksViewSet)
+router.register(r'chapters', viewsets.ChaptersViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

@@ -26,3 +26,9 @@ class BooksViewSet(viewsets.ModelViewSet):
 class ChaptersViewSet(viewsets.ModelViewSet):
     queryset = models.Chapters.objects.all()
     serializer_class = serializers.ChaptersSerializer
+
+
+class CharactersViewSet(viewsets.ModelViewSet):
+    queryset = models.Characters.objects.all()
+    serializer_class = serializers.CharactersSerialiazer
+

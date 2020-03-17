@@ -1,9 +1,7 @@
 from django.db.models.query import QuerySet
 from rest_framework.response import Response
-from django.http import HttpResponse, JsonResponse
 from rest_framework.decorators import action
 from rest_framework import viewsets
-from rest_framework.status import HTTP_400_BAD_REQUEST
 from . import models
 from . import serializers
 

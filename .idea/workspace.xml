@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b252e2e0-091f-4d67-b117-32e9a233cfb2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/myapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/myapp/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myapp/restapi/migrations/0003_auto_20200317_1230.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myapp/restapi/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/restapi/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/restapi/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/restapi/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myapp/restapi/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/restapi/tests.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myapp/restapi/viewsets.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/restapi/viewsets.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,8 +19,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myapp/restapi/tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1410">
-              <caret line="94" column="4" lean-forward="true" selection-start-line="94" selection-start-column="4" selection-end-line="94" selection-end-column="4" />
+            <state relative-caret-position="98">
+              <caret line="140" column="14" lean-forward="true" selection-start-line="140" selection-start-column="14" selection-end-line="140" selection-end-column="14" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -31,8 +31,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myapp/restapi/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+            <state relative-caret-position="345">
+              <caret line="23" column="18" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -49,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/myapp/restapi/viewsets.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="414">
+              <caret line="39" column="33" lean-forward="true" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -61,11 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myapp/myapp/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+            <state relative-caret-position="75">
+              <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -98,12 +98,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/myapp/restapi/tests.py" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/myapp/restapi/models.py" />
         <option value="$PROJECT_DIR$/myapp/restapi/serializers.py" />
-        <option value="$PROJECT_DIR$/myapp/restapi/viewsets.py" />
         <option value="$PROJECT_DIR$/myapp/myapp/urls.py" />
+        <option value="$PROJECT_DIR$/myapp/restapi/models.py" />
+        <option value="$PROJECT_DIR$/myapp/restapi/tests.py" />
+        <option value="$PROJECT_DIR$/myapp/restapi/viewsets.py" />
       </list>
     </option>
   </component>
@@ -218,7 +218,7 @@
       <updated>1584183886732</updated>
       <workItem from="1584183890797" duration="5156000" />
       <workItem from="1584268665796" duration="2989000" />
-      <workItem from="1584442561558" duration="2920000" />
+      <workItem from="1584442561558" duration="6496000" />
     </task>
     <servers />
   </component>
@@ -228,7 +228,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11065000" />
+    <option name="totallyTimeSpent" value="14641000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -257,7 +257,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32957748" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50080776" side_tool="true" weight="0.32994187" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.38450703" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.20704225" />
       <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.49919224" weight="0.32957748" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -306,13 +306,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/restapi/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myapp/restapi/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -322,13 +315,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/restapi/viewsets.py">
+    <entry file="file://$PROJECT_DIR$/myapp/myapp/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="75">
+          <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -344,18 +334,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/myapp/restapi/tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1410">
-          <caret line="94" column="4" lean-forward="true" selection-start-line="94" selection-start-column="4" selection-end-line="94" selection-end-column="4" />
+        <state relative-caret-position="98">
+          <caret line="140" column="14" lean-forward="true" selection-start-line="140" selection-start-column="14" selection-end-line="140" selection-end-column="14" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/myapp/urls.py">
+    <entry file="file://$PROJECT_DIR$/myapp/restapi/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        <state relative-caret-position="345">
+          <caret line="23" column="18" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/env/lib/python3.6/site-packages/rest_framework/response.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myapp/restapi/viewsets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="39" column="33" lean-forward="true" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

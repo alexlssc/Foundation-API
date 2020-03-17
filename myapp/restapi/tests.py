@@ -6,7 +6,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.test import APITestCase
 
-from .models import Books, Chapters
+from .models import Books, Chapters, Characters
 
 
 class BookTest(APITestCase):
@@ -104,4 +104,65 @@ class ChapterTest(APITestCase):
             format=json
         )
         self.assertEqual(len(response.data), 1)
+
+
+class CharacterTest(APITestCase):
+    def setUp(self):
+        self.book1 = Books(name='Book1')
+        self.book1.save()
+        self.book2 = Books(name='Book2')
+        self.book2.save()
+        self.character = Characters.objects.create(character_name='CharacterTest')
+        self.character.books.set([self.book1, self.book2])
+        self.character.save()
+
+    def test_get_characters(self):
+        response = self.client.get('/api/characters/', format=json)
+        self.assertEqual(response.data['count'], 1)
+
+    def test_get_character_details(self):
+        response = self.client.get(f'/api/characters/{self.character.id}/', format=json)
+        self.assertEqual(response.data['character_name'], 'CharacterTest')
+
+    def test_characters_update(self):
+        valid_new_value = {
+            "character_name": "UpdatedTestName",
+            "books": [
+                self.book1.id,
+                self.book2.id
+            ]
+        }
+        response = self.client.put(
+            f'/api/characters/{self.character.id}/',
+            data=json.dumps(valid_new_value),
+            content_type='application/json'
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['character_name'], 'UpdatedTestName')
+
+    def test_invalid_characters_update(self):
+        invalid_new_value = {
+            "character_name": "",
+            "books": [
+                self.book1.id,
+                self.book2.id
+            ]
+        }
+        response = self.client.put(
+            f'/api/characters/{self.character.id}/',
+            data=json.dumps(invalid_new_value),
+            content_type='application/json'
+        )
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def test_characters_delete(self):
+        response = self.client.delete(f'/api/characters/{self.character.id}/')
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+    def test_characters_of_books(self):
+        response = self.client.get(f'/api/books/{self.book1.id}/characters/')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.data), 1)
+
+
 

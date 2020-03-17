@@ -20,7 +20,7 @@ class Chapters(models.Model):
 
 
 class Characters(models.Model):
-    books = models.ManyToManyField(Books)
+    books = models.ManyToManyField(Books, related_name='characters')
     character_name = models.CharField(max_length=200)
 
     def __str__(self):

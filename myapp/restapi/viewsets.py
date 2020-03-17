@@ -13,7 +13,8 @@ class BooksViewSet(viewsets.ModelViewSet):
     @action(detail=True)
     def chapters(self, request, pk):
         '''
-        Returns all chapters of a specific book
+        Return all the chapters of a specific book
+        :return: Response Object
         '''
         book = self.get_object()
         book_id = book.id
@@ -21,6 +22,18 @@ class BooksViewSet(viewsets.ModelViewSet):
         chapters_serializer = serializers.ChaptersSerializer(
             chapters, many=True)
         return Response(chapters_serializer.data)
+
+    @action(detail=True)
+    def characters(self, request, pk):
+        '''
+        Return all the characters of a specific book
+        :return: Response Object
+        '''
+        book = self.get_object()
+        book_id = book.id
+        characters = models.Characters.objects.all().filter(books=book_id)
+        characters_serializer = serializers.CharactersSerialiazer(characters, many=True)
+        return Response(characters_serializer.data)
 
 
 class ChaptersViewSet(viewsets.ModelViewSet):

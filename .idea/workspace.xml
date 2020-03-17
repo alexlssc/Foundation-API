@@ -226,7 +226,7 @@
       <updated>1584183886732</updated>
       <workItem from="1584183890797" duration="5156000" />
       <workItem from="1584268665796" duration="2989000" />
-      <workItem from="1584442561558" duration="6742000" />
+      <workItem from="1584442561558" duration="6798000" />
     </task>
     <servers />
   </component>
@@ -236,7 +236,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14887000" />
+    <option name="totallyTimeSpent" value="14943000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -251,7 +251,7 @@
     <frame x="0" y="0" width="1280" height="800" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20113085" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20113085" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -265,7 +265,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32957748" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50080776" side_tool="true" weight="0.32994187" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.20704225" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.20704225" />
       <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.49919224" weight="0.32957748" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />

@@ -1,1 +1,16 @@
 # Foundation-API
+
+This is an API around the Foundation Series of Isaac Asimov. It will provide data about the different books such as their
+chapters, the characters and quotes within the books. 
+
+## API implemented so far
+
+
+| Endpoint | Response |
+| --- | --- |
+| /api/books/ | Get all books |
+| /api/books/{id}/ | Get specific book |
+| /api/chapters/ | Get all chapters | 
+| /api/chapters/{id}/ | Get specific chapters |
+| /api/books/{id}/chapters/ | Get all chapters of specific book |
+

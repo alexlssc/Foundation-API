@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b252e2e0-091f-4d67-b117-32e9a233cfb2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/myapp/myapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/myapp/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/restapi/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/restapi/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/restapi/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/restapi/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/restapi/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/restapi/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/restapi/viewsets.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/restapi/viewsets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,10 +26,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myapp/restapi/tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
+            <state relative-caret-position="3390">
               <caret line="226" column="73" selection-start-line="226" selection-start-column="73" selection-end-line="226" selection-end-column="73" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
@@ -75,12 +71,12 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="285">
-                <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+              <first_editor relative-caret-position="223">
+                <caret line="20" selection-start-line="20" selection-end-line="20" />
               </first_editor>
               <second_editor />
             </state>
@@ -127,12 +123,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/myapp/restapi/serializers.py" />
         <option value="$PROJECT_DIR$/myapp/restapi/viewsets.py" />
         <option value="$PROJECT_DIR$/myapp/myapp/urls.py" />
         <option value="$PROJECT_DIR$/myapp/restapi/models.py" />
         <option value="$PROJECT_DIR$/myapp/restapi/tests.py" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -248,7 +244,7 @@
       <updated>1584183886732</updated>
       <workItem from="1584183890797" duration="5156000" />
       <workItem from="1584268665796" duration="2989000" />
-      <workItem from="1584442561558" duration="9408000" />
+      <workItem from="1584442561558" duration="9638000" />
     </task>
     <servers />
   </component>
@@ -258,7 +254,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17553000" />
+    <option name="totallyTimeSpent" value="17783000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -365,16 +361,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="285">
-            <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myapp/restapi/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
@@ -421,11 +407,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/myapp/restapi/tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
+        <state relative-caret-position="3390">
           <caret line="226" column="73" selection-start-line="226" selection-start-column="73" selection-end-line="226" selection-end-column="73" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="223">
+            <caret line="20" selection-start-line="20" selection-end-line="20" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

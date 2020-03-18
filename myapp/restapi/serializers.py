@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User, Group
 from django.db.models import fields
 from rest_framework import serializers
-from .models import Books, Chapters, Characters
+from .models import Books, Chapters, Characters, Quotes
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -28,7 +28,13 @@ class ChaptersSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class CharactersSerialiazer(serializers.ModelSerializer):
+class CharactersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Characters
+        fields = '__all__'
+
+
+class QuotesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Quotes
         fields = '__all__'

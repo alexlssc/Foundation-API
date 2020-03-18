@@ -32,7 +32,7 @@ class BooksViewSet(viewsets.ModelViewSet):
         book = self.get_object()
         book_id = book.id
         characters = models.Characters.objects.all().filter(books=book_id)
-        characters_serializer = serializers.CharactersSerialiazer(characters, many=True)
+        characters_serializer = serializers.CharactersSerializer(characters, many=True)
         return Response(characters_serializer.data)
 
 
@@ -43,5 +43,10 @@ class ChaptersViewSet(viewsets.ModelViewSet):
 
 class CharactersViewSet(viewsets.ModelViewSet):
     queryset = models.Characters.objects.all()
-    serializer_class = serializers.CharactersSerialiazer
+    serializer_class = serializers.CharactersSerializer
+
+
+class QuotesViewSet(viewsets.ModelViewSet):
+    queryset = models.Quotes.objects.all()
+    serializer_class = serializers.QuotesSerializer
 

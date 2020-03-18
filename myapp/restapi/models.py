@@ -20,8 +20,17 @@ class Chapters(models.Model):
 
 
 class Characters(models.Model):
-    books = models.ManyToManyField(Books, related_name='characters')
+    books = models.ManyToManyField(Books)
     character_name = models.CharField(max_length=200)
 
     def __str__(self):
         return self.character_name
+
+
+class Quotes(models.Model):
+    book = models.ForeignKey(Books, on_delete=models.CASCADE)
+    character = models.ForeignKey(Characters, on_delete=models.CASCADE)
+    citation = models.TextField()
+
+    def __str__(self):
+        return self.citation

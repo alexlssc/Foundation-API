@@ -6,7 +6,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.test import APITestCase
 
-from .models import Books, Chapters, Characters
+from .models import Books, Chapters, Characters, Quotes
 
 
 class BookTest(APITestCase):
@@ -163,6 +163,70 @@ class CharacterTest(APITestCase):
         response = self.client.get(f'/api/books/{self.book1.id}/characters/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data), 1)
+
+
+class QuoteTest(APITestCase):
+    def setUp(self):
+        self.book = Books(name="TestBook")
+        self.book.save()
+        self.character = Characters.objects.create(character_name='CharacterTest')
+        self.character.books.set([self.book])
+        self.character.save()
+        self.quote = Quotes(book=self.book, character=self.character, citation='This is the quote I wants')
+        self.quote.save()
+
+        self.valid_data = {
+            "book": self.book.id,
+            "character": self.character.id,
+            "citation": "The brand new quote"
+        }
+
+        self.invalid_data = {
+            "book": self.book.id,
+            "character": self.character.id,
+            "citation": ""
+        }
+
+    def test_get_quotes(self):
+        response = self.client.get(f'/api/quotes/', format=json)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['count'], 1)
+
+    def test_get_quote_details(self):
+        response = self.client.get(f'/api/quotes/{self.quote.id}/', format=json)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['citation'], 'This is the quote I wants')
+
+    def test_post_quote(self):
+        response = self.client.post(
+            f'/api/quotes/',
+            data=json.dumps(self.valid_data),
+            content_type='application/json'
+        )
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+    def test_valid_update_quote(self):
+        response = self.client.put(
+            f'/api/quotes/{self.quote.id}/',
+            data=json.dumps(self.valid_data),
+            content_type='application/json'
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['citation'], 'The brand new quote')
+
+    def test_invalid_update_quote(self):
+        response = self.client.put(
+            f'/api/quotes/{self.quote.id}/',
+            data=json.dumps(self.invalid_data),
+            content_type='application/json'
+        )
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def test_delete_quote(self):
+        response = self.client.delete(f'/api/quotes/{self.quote.id}/')
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+
 
 
 

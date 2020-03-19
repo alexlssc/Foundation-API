@@ -35,6 +35,18 @@ class BooksViewSet(viewsets.ModelViewSet):
         characters_serializer = serializers.CharactersSerializer(characters, many=True)
         return Response(characters_serializer.data)
 
+    @action(detail=True)
+    def quotes(self, request, pk):
+        '''
+        Return all the quotes of a specific book
+        :return: Response Object
+        '''
+        book = self.get_object()
+        book_id = book.id
+        quotes = models.Quotes.objects.all().filter(book=book_id)
+        quotes_serializer = serializers.QuotesSerializer(quotes, many=True)
+        return Response(quotes_serializer.data)
+
 
 class ChaptersViewSet(viewsets.ModelViewSet):
     queryset = models.Chapters.objects.all()
@@ -44,6 +56,18 @@ class ChaptersViewSet(viewsets.ModelViewSet):
 class CharactersViewSet(viewsets.ModelViewSet):
     queryset = models.Characters.objects.all()
     serializer_class = serializers.CharactersSerializer
+
+    @action(detail=True)
+    def quotes(self, request, pk):
+        '''
+        Return all the quotes of a specific character
+        :return: Response Object
+        '''
+        character = self.get_object()
+        character_id = character.id
+        quotes = models.Quotes.objects.all().filter(character=character_id)
+        quotes_serializer = serializers.QuotesSerializer(quotes, many=True)
+        return Response(quotes_serializer.data)
 
 
 class QuotesViewSet(viewsets.ModelViewSet):

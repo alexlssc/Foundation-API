@@ -226,6 +226,14 @@ class QuoteTest(APITestCase):
         response = self.client.delete(f'/api/quotes/{self.quote.id}/')
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
+    def test_quotes_of_books(self):
+        response = self.client.get(f'/api/books/{self.book.id}/quotes/', format=json)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_quotes_of_characters(self):
+        response = self.client.get(f'/api/characters/{self.character.id}/quotes/', format=json)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
 
 
 

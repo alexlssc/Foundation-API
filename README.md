@@ -18,5 +18,6 @@ chapters, the characters and quotes within the books.
 | /api/books/{books.id}/characters/ | Get all characters of specific book |
 | /api/quotes/ | Get all quotes |
 | /api/quotes/{id}/ | Get specific quote |
-
+| /api/books/{books.id}/quotes/ | Get quotes from specific book |
+| /api/characters/{characters.id}/quotes/ | Get quotes from specific character | 
 

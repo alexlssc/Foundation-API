@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b252e2e0-091f-4d67-b117-32e9a233cfb2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/myapp/restapi/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/restapi/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myapp/restapi/viewsets.py" beforeDir="false" afterPath="$PROJECT_DIR$/myapp/restapi/viewsets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +26,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myapp/restapi/tests.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="3555">
@@ -42,7 +41,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myapp/restapi/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
+            <state relative-caret-position="259">
               <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
             </state>
           </provider>
@@ -51,7 +50,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myapp/restapi/serializers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
+            <state relative-caret-position="570">
               <caret line="38" column="22" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
@@ -63,7 +62,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myapp/restapi/viewsets.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
+            <state relative-caret-position="930">
               <caret line="62" column="53" selection-start-line="62" selection-start-column="53" selection-end-line="62" selection-end-column="53" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
@@ -72,12 +71,12 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="223">
-                <caret line="20" selection-start-line="20" selection-end-line="20" />
+              <first_editor relative-caret-position="287">
+                <caret line="21" column="81" selection-start-line="21" selection-start-column="81" selection-end-line="21" selection-end-column="81" />
               </first_editor>
               <second_editor />
             </state>
@@ -127,9 +126,9 @@
         <option value="$PROJECT_DIR$/myapp/restapi/serializers.py" />
         <option value="$PROJECT_DIR$/myapp/myapp/urls.py" />
         <option value="$PROJECT_DIR$/myapp/restapi/models.py" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/myapp/restapi/viewsets.py" />
         <option value="$PROJECT_DIR$/myapp/restapi/tests.py" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -245,7 +244,7 @@
       <updated>1584183886732</updated>
       <workItem from="1584183890797" duration="5156000" />
       <workItem from="1584268665796" duration="2989000" />
-      <workItem from="1584442561558" duration="10702000" />
+      <workItem from="1584442561558" duration="10992000" />
     </task>
     <servers />
   </component>
@@ -255,7 +254,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18847000" />
+    <option name="totallyTimeSpent" value="19137000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -268,6 +267,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.20113085" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -378,19 +378,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="223">
-            <caret line="20" selection-start-line="20" selection-end-line="20" />
-          </first_editor>
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/myapp/restapi/viewsets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="930">
+          <caret line="62" column="53" selection-start-line="62" selection-start-column="53" selection-end-line="62" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myapp/restapi/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
+        <state relative-caret-position="570">
           <caret line="38" column="22" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
@@ -400,18 +400,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/myapp/restapi/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
+        <state relative-caret-position="259">
           <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myapp/restapi/viewsets.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="62" column="53" selection-start-line="62" selection-start-column="53" selection-end-line="62" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -422,6 +412,16 @@
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="287">
+            <caret line="21" column="81" selection-start-line="21" selection-start-column="81" selection-end-line="21" selection-end-column="81" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

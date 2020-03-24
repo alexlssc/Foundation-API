@@ -1,21 +1,27 @@
 import json
-from unittest import main
 
 from django.contrib.auth.models import User
-from django.test import TestCase
 from rest_framework import status
-from rest_framework.response import Response
 from rest_framework.test import APITestCase
 from rest_framework.authtoken.models import Token
 
 from .models import Books, Chapters, Characters, Quotes
 
-user = User.objects.get(username='testuser')
-token = Token.objects.get(user__username='testuser')
+'''
+Get 2 users and their respective token: one staff and one normal user
+'''
+user_admin = User.objects.get(username='testuser')
+user_admin.is_staff = True
+user_admin.save()
+token_admin = Token.objects.get(user__username='testuser')
+user_no_admin = User.objects.get(username='normalUser')
+user_no_admin.save()
+token_no_admin = Token.objects.get(user__username='normalUser')
+
 
 class BookTest(APITestCase):
     def setUp(self):
-        self.client.force_authenticate(user=user, token=token.key)
+        self.client.force_authenticate(user=user_admin, token=token_admin.key)
         self.books = Books(name='Test', author='Isaac Asimov', year_published='2020', isbn='46200182')
         self.books.save()
 
@@ -33,6 +39,21 @@ class BookTest(APITestCase):
         )
         self.assertEqual(Books.objects.count(), 2)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+    def test_books_creation_no_permissions(self):
+        self.client.force_authenticate(user=user_no_admin, token=token_no_admin.key)
+        new_data = {
+            "name": "testcase",
+            "author": "Isaac Asimov",
+            "year_published": "1950",
+            "isbn": "4729201"
+        }
+        response = self.client.post(
+            '/api/books/',
+            data=json.dumps(new_data),
+            content_type='application/json'
+        )
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_books_get(self):
         response = self.client.get('/api/books/', format=json)
@@ -59,14 +80,34 @@ class BookTest(APITestCase):
         )
         self.assertEqual('newTestCase', response.data['name'])
 
+    def test_books_update_no_permission(self):
+        self.client.force_authenticate(user=user_no_admin, token=token_no_admin.key)
+        new_data = {
+            "name": "newTestCase",
+            "author": "Isaac Asimov",
+            "year_published": "1950",
+            "isbn": "4729201"
+        }
+        response = self.client.put(
+            f'/api/books/{self.books.id}/',
+            data = json.dumps(new_data),
+            content_type='application/json',
+        )
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
     def test_delete_books(self):
         response = self.client.delete(f'/api/books/{self.books.id}/')
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
+    def test_delete_books_no_permission(self):
+        self.client.force_authenticate(user=user_no_admin, token=token_no_admin.key)
+        response = self.client.delete(f'/api/books/{self.books.id}/')
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
 
 class ChapterTest(APITestCase):
     def setUp(self):
-        self.client.force_authenticate(user=user, token=token.key)
+        self.client.force_authenticate(user=user_admin, token=token_admin.key)
         self.book = Books(name='Test', author='Isaac Asimov', year_published='2020', isbn='46200182')
         self.book.save()
         self.chapters = Chapters(book=self.book, chapter_name="chapter_test")
@@ -80,6 +121,15 @@ class ChapterTest(APITestCase):
         )
         self.assertEqual(Chapters.objects.count(), 2)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+    def test_chapters_creation_no_permission(self):
+        self.client.force_authenticate(user=user_no_admin, token=token_no_admin.key)
+        response = self.client.post(
+            '/api/chapters/',
+            data=json.dumps({"book": self.book.id, "chapter_name": "newChapterName"}),
+            content_type='application/json'
+        )
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_chapters_get(self):
         response = self.client.get('/api/chapters/', format=json)
@@ -100,9 +150,23 @@ class ChapterTest(APITestCase):
         )
         self.assertEqual('newTestCase', response.data['chapter_name'])
 
+    def test_chapters_update_no_permissions(self):
+        self.client.force_authenticate(user=user_no_admin, token=token_no_admin.key)
+        response = self.client.put(
+            f'/api/chapters/{self.chapters.id}/',
+            data = json.dumps({"book" : self.book.id, "chapter_name": "newTestCase"}),
+            content_type='application/json',
+        )
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
     def test_delete_chapters(self):
         response = self.client.delete(f'/api/chapters/{self.chapters.id}/')
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+    def test_delete_chapters_no_permissions(self):
+        self.client.force_authenticate(user=user_no_admin, token=token_no_admin.key)
+        response = self.client.delete(f'/api/chapters/{self.chapters.id}/')
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_chapters_of_books(self):
         response = self.client.get(
@@ -114,7 +178,7 @@ class ChapterTest(APITestCase):
 
 class CharacterTest(APITestCase):
     def setUp(self):
-        self.client.force_authenticate(user=user, token=token.key)
+        self.client.force_authenticate(user=user_admin, token=token_admin.key)
         self.book1 = Books(name='Book1', author='Isaac Asimov', year_published='2020', isbn='46200182')
         self.book1.save()
         self.book2 = Books(name='Book2', author='Isaac Asimov', year_published='2020', isbn='47399203')
@@ -131,6 +195,38 @@ class CharacterTest(APITestCase):
         response = self.client.get(f'/api/characters/{self.character.id}/', format=json)
         self.assertEqual(response.data['character_name'], 'CharacterTest')
 
+    def test_characters_creation(self):
+        valid_new_value = {
+            "character_name": "newTestName",
+            "books": [
+                self.book1.id,
+                self.book2.id
+            ]
+        }
+        response = self.client.post(
+            f'/api/characters/',
+            data=json.dumps(valid_new_value),
+            content_type='application/json'
+        )
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(response.data['character_name'], 'newTestName')
+
+    def test_characters_creation_no_permission(self):
+        self.client.force_authenticate(user=user_no_admin, token=token_no_admin.key)
+        valid_new_value = {
+            "character_name": "newTestName",
+            "books": [
+                self.book1.id,
+                self.book2.id
+            ]
+        }
+        response = self.client.post(
+            f'/api/characters/',
+            data=json.dumps(valid_new_value),
+            content_type='application/json'
+        )
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
     def test_characters_update(self):
         valid_new_value = {
             "character_name": "UpdatedTestName",
@@ -146,6 +242,22 @@ class CharacterTest(APITestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['character_name'], 'UpdatedTestName')
+
+    def test_characters_update_no_permission(self):
+        self.client.force_authenticate(user=user_no_admin, token=token_no_admin.key)
+        valid_new_value = {
+            "character_name": "UpdatedTestName",
+            "books": [
+                self.book1.id,
+                self.book2.id
+            ]
+        }
+        response = self.client.put(
+            f'/api/characters/{self.character.id}/',
+            data=json.dumps(valid_new_value),
+            content_type='application/json'
+        )
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_invalid_characters_update(self):
         invalid_new_value = {
@@ -166,6 +278,11 @@ class CharacterTest(APITestCase):
         response = self.client.delete(f'/api/characters/{self.character.id}/')
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
+    def test_characters_delete_no_permission(self):
+        self.client.force_authenticate(user=user_no_admin, token=token_no_admin.key)
+        response = self.client.delete(f'/api/characters/{self.character.id}/')
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
     def test_characters_of_books(self):
         response = self.client.get(f'/api/books/{self.book1.id}/characters/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -174,7 +291,7 @@ class CharacterTest(APITestCase):
 
 class QuoteTest(APITestCase):
     def setUp(self):
-        self.client.force_authenticate(user=user, token=token.key)
+        self.client.force_authenticate(user=user_admin, token=token_admin.key)
         self.book = Books(name='TestBook', author='Isaac Asimov', year_published='2020', isbn='46200182')
         self.book.save()
         self.character = Characters.objects.create(character_name='CharacterTest')
@@ -213,6 +330,15 @@ class QuoteTest(APITestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
+    def test_post_quote_no_permission(self):
+        self.client.force_authenticate(user=user_no_admin, token=token_no_admin.key)
+        response = self.client.post(
+            f'/api/quotes/',
+            data=json.dumps(self.valid_data),
+            content_type='application/json'
+        )
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
     def test_valid_update_quote(self):
         response = self.client.put(
             f'/api/quotes/{self.quote.id}/',
@@ -221,6 +347,15 @@ class QuoteTest(APITestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['citation'], 'The brand new quote')
+
+    def test_valid_update_quote_no_permission(self):
+        self.client.force_authenticate(user=user_no_admin, token=token_no_admin.key)
+        response = self.client.put(
+            f'/api/quotes/{self.quote.id}/',
+            data=json.dumps(self.valid_data),
+            content_type='application/json'
+        )
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_invalid_update_quote(self):
         response = self.client.put(
@@ -233,6 +368,11 @@ class QuoteTest(APITestCase):
     def test_delete_quote(self):
         response = self.client.delete(f'/api/quotes/{self.quote.id}/')
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+    def test_delete_quote_no_permission(self):
+        self.client.force_authenticate(user=user_no_admin, token=token_no_admin.key)
+        response = self.client.delete(f'/api/quotes/{self.quote.id}/')
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_quotes_of_books(self):
         response = self.client.get(f'/api/books/{self.book.id}/quotes/', format=json)

@@ -1,17 +1,22 @@
 import json
 from unittest import main
 
+from django.contrib.auth.models import User
 from django.test import TestCase
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.test import APITestCase
+from rest_framework.authtoken.models import Token
 
 from .models import Books, Chapters, Characters, Quotes
 
+user = User.objects.get(username='testuser')
+token = Token.objects.get(user__username='testuser')
 
 class BookTest(APITestCase):
     def setUp(self):
-        self.books = Books(name='Test')
+        self.client.force_authenticate(user=user, token=token.key)
+        self.books = Books(name='Test', author='Isaac Asimov', year_published='2020', isbn='46200182')
         self.books.save()
 
     def test_books_creation(self):
@@ -61,7 +66,8 @@ class BookTest(APITestCase):
 
 class ChapterTest(APITestCase):
     def setUp(self):
-        self.book = Books(name="Test")
+        self.client.force_authenticate(user=user, token=token.key)
+        self.book = Books(name='Test', author='Isaac Asimov', year_published='2020', isbn='46200182')
         self.book.save()
         self.chapters = Chapters(book=self.book, chapter_name="chapter_test")
         self.chapters.save()
@@ -79,7 +85,7 @@ class ChapterTest(APITestCase):
         response = self.client.get('/api/chapters/', format=json)
         self.assertEqual(response.data['count'], 1)
 
-    def test_books_get_details(self):
+    def test_chapters_get_details(self):
         response_details = self.client.get(
             f'/api/chapters/{self.chapters.id}/',
             format=json
@@ -108,9 +114,10 @@ class ChapterTest(APITestCase):
 
 class CharacterTest(APITestCase):
     def setUp(self):
-        self.book1 = Books(name='Book1')
+        self.client.force_authenticate(user=user, token=token.key)
+        self.book1 = Books(name='Book1', author='Isaac Asimov', year_published='2020', isbn='46200182')
         self.book1.save()
-        self.book2 = Books(name='Book2')
+        self.book2 = Books(name='Book2', author='Isaac Asimov', year_published='2020', isbn='47399203')
         self.book2.save()
         self.character = Characters.objects.create(character_name='CharacterTest')
         self.character.books.set([self.book1, self.book2])
@@ -167,7 +174,8 @@ class CharacterTest(APITestCase):
 
 class QuoteTest(APITestCase):
     def setUp(self):
-        self.book = Books(name="TestBook")
+        self.client.force_authenticate(user=user, token=token.key)
+        self.book = Books(name='TestBook', author='Isaac Asimov', year_published='2020', isbn='46200182')
         self.book.save()
         self.character = Characters.objects.create(character_name='CharacterTest')
         self.character.books.set([self.book])
